@@ -23,14 +23,14 @@ const contentSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(fetchContent.pending, (state) => {
+            .addCase(fetchContent?.pending, (state) => {
                 state.status = 'loading';
             })
-            .addCase(fetchContent.fulfilled, (state, action) => {
+            .addCase(fetchContent?.fulfilled, (state, action) => {
                 state.status = 'succeeded';
-                state.items = [...state.items, ...action.payload.page['content-items'].content];
+                state.items = [...state?.items, ...action?.payload?.page['content-items']?.content];
                 state.page += 1;
-                state.hasMore = action.payload.page['content-items'].content.length > 0;
+                state.hasMore = action?.payload?.page['content-items']?.content?.length > 0;
             })
             .addCase(fetchContent.rejected, (state, action) => {
                 state.status = 'failed';

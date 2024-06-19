@@ -6,8 +6,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 const MainScreen = () => {
     const dispatch = useDispatch();
-    const items = useSelector((state) => state.content.items);
-    const status = useSelector((state) => state.content.status);
+    const items = useSelector((state) => state?.content?.items);
+    const status = useSelector((state) => state?.content?.status);
     const [searchTerm, setSearchTerm] = useState('');
 
     useEffect(() => {
@@ -20,7 +20,7 @@ const MainScreen = () => {
         }
     };
 
-    const filteredItems = items.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filteredItems = items?.filter(item => item?.name?.toLowerCase()?.includes(searchTerm?.toLowerCase()));
 
     const renderItem = ({ item }) => (
         <View style={styles.item}>
@@ -59,6 +59,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#171717',
         paddingTop: 50,
+        marginBottom:30
     },
     searchContainer: {
         flexDirection: 'row',
